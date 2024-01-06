@@ -1,93 +1,149 @@
-import React, { useState } from "react";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-import Tablee from "./table";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useState } from "react";
 
-const { Header, Content, Footer, Sider } = Layout;
+function App() {
+  const [isActive, setIsActive] = useState(false);
 
-type MenuItem = Required<MenuProps>["items"][number];
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[]
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
-
-const items: MenuItem[] = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
-  ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
-  ]),
-  getItem("Files", "9", <FileOutlined />),
-];
-
-const App: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-
+  const handleClick = (status: boolean) => {
+    setIsActive(status);
+  };
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-      >
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
-          items={items}
-        />
-      </Sider>
-      <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            <Tablee></Tablee>
+    <div className={`container ${isActive ? "active" : ""}`} id="container">
+      <div className="sign-up absolute top-0 h-full transition duration-1000 ease-in-out left-0 w-[50%] ">
+        <form className="bg-[#fff] flex items-center justify-center flex-col py-0 px-[40px] h-full">
+          <h1>Create Account</h1>
+          <div className="my-5 mx-0">
+            <a
+              href="#"
+              className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
+            >
+              <i className="fa-brands fa-google-plus-g" />
+            </a>
+            <a
+              href="#"
+              className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
+            >
+              <i className="fa-brands fa-facebook-f" />
+            </a>
+            <a
+              href="#"
+              className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
+            >
+              <i className="fa-brands fa-github" />
+            </a>
+            <a
+              href="#"
+              className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
+            >
+              <i className="fa-brands fa-linkedin-in" />
+            </a>
           </div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
-      </Layout>
-    </Layout>
+          <span className="text-[13px]">
+            or use your email for registeration
+          </span>
+          <input
+            className="bg-[#eee] border-none my-[8px] mx-0 py-[10px] px-[15px] text-[13px] rounded-[8px] w-full outline-none"
+            type="text"
+            placeholder="Name"
+          />
+          <input
+            className="bg-[#eee] border-none my-[8px] mx-0 py-[10px] px-[15px] text-[13px] rounded-[8px] w-full outline-none"
+            type="email"
+            placeholder="Email"
+          />
+          <input
+            className="bg-[#eee] border-none my-[8px] mx-0 py-[10px] px-[15px] text-[13px] rounded-[8px] w-full outline-none"
+            type="password"
+            placeholder="Password"
+          />
+          <button className="bg-[#ff7141] text-[#fff] text-[13px] py-[10px] px-[45px] border border-solid border-transparent border-1">
+            Sign Up
+          </button>
+        </form>
+      </div>
+      <div className="sign-in absolute top-0 h-full transition duration-1000 ease-in-out left-0 w-[50%] z-[2]">
+        <form className="bg-[#fff] flex items-center justify-center flex-col p-0 px-[40px] h-full">
+          <h1>Sign In</h1>
+          <div className="my-5 mx-0">
+            <a
+              href="#"
+              className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
+            >
+              <i className="fa-brands fa-google-plus-g" />
+            </a>
+            <a
+              href="#"
+              className=" text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
+            >
+              <i className="fa-brands fa-facebook-f" />
+            </a>
+            <a
+              href="#"
+              className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
+            >
+              <i className="fa-brands fa-github" />
+            </a>
+            <a
+              href="#"
+              className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
+            >
+              <i className="fa-brands fa-linkedin-in" />
+            </a>
+          </div>
+          <span className="text-[13px]">or use your email password</span>
+          <input
+            className="bg-[#eee] border-none my-[8px] mx-0 py-[10px] px-[15px] text-[13px] rounded-[8px] w-full outline-none"
+            type="email"
+            placeholder="Email"
+          />
+          <input
+            className="bg-[#eee] border-none my-[8px] mx-0 py-[10px] px-[15px] text-[13px] rounded-[8px] w-full outline-none"
+            type="password"
+            placeholder="Password"
+          />
+          <a
+            href="#"
+            className="icon text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px]"
+          >
+            Forget Your Password?
+          </a>
+          <button className="bg-[#ff7141] text-[#fff] text-[13px] py-[10px] px-[45px] border border-solid border-transparent border-1">
+            Sign In
+          </button>
+        </form>
+      </div>
+      <div className="toggle-container ">
+        <div className="toggle bg-[#ff7141] text-white relative left-[-100%] h-full w-[200%] transform translate-x-0 transition-all duration-700 ease-in-out">
+          <div className="toggle-panel absolute w-1/2 h-full flex justify-center items-center flex-col py-0 px-[30px] text-center top-0 transform translate-x-0 transition-all duration-700 ease-in-out toggle-left">
+            <h1>Welcome Back!</h1>
+            <p className="text-[14px] leading-5 tracking-tight my-3 mx-0">
+              Enter your personal details to come to my website
+            </p>
+            <button
+              className="bg-[#ff7141] text-[#fff] text-[13px] py-[10px] px-[45px] border border-solid border-transparent border-1 bg-transparent "
+              id="login"
+              onClick={() => handleClick(false)}
+            >
+              Sign In
+            </button>
+          </div>
+          <div className="toggle-panel absolute w-1/2 h-full flex justify-center items-center flex-col py-0 px-[30px] text-center top-0 transform translate-x-0 transition-all duration-700 ease-in-out   toggle-right">
+            <h1>Hi, Guy!</h1>
+            <p className="text-[14px] leading-5 tracking-tight my-3 mx-0">
+              Register with your personal details to come to my website
+            </p>
+            <button
+              className="bg-transparent text-[#fff] text-[13px] py-[10px] px-[45px] border border-solid border-transparent border-1"
+              id="register"
+              onClick={() => handleClick(true)}
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-};
+}
 
 export default App;
