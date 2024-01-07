@@ -110,7 +110,7 @@ function App() {
               onClick={() => handleClick(false)}
             >
               <span className="relative text-[18px] font-bold tracking-wider text-[#234567]">
-                Hover me
+                Sign In
               </span>
             </button>
           </div>
@@ -124,7 +124,7 @@ function App() {
               onClick={() => handleClick(true)}
             >
               <span className="relative text-[18px] font-bold tracking-wider text-[#234567]">
-                Hover me
+                Sign Up
               </span>
             </button>
           </div>
