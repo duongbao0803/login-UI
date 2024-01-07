@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+$font-family: "Montserrat", sans-serif;
+$primary-color: #ff6f3f;
+$secondary-color: #fda081;
+$container-width: 768px;
+$container-border-radius: 30px;
+$container-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+$light-background: #fff;
+$cta-hover-background: linear-gradient(to right, #fdbfaa, #ffd7c9);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
+}
+
+body {
+  background: linear-gradient(to left, $primary-color, $secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+span {
+  font-size: 13px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.container {
+  background-color: $light-background;
+  border-radius: $container-border-radius;
+  box-shadow: $container-box-shadow;
+  position: relative;
+  overflow: hidden;
+  width: $container-width;
+  max-width: 100%;
+  min-height: 480px;
+}
+
+.container.active .sign-in {
+  transform: translateX(100%);
+}
+
+.container.active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+@keyframes move {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.container.active .toggle-container {
+  transform: translateX(-100%);
+}
+
+.container.active .toggle {
+  transform: translateX(50%);
+}
+
+.toggle-left {
+  transform: translateX(-200%);
+}
+
+.container.active .toggle-left {
+  transform: translateX(0);
+}
+
+.toggle-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.container.active .toggle-right {
+  transform: translateX(200%);
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: $light-background;
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+  background: $cta-hover-background;
+}

@@ -9,9 +9,9 @@ function App() {
   };
   return (
     <div className={`container ${isActive ? "active" : ""}`} id="container">
-      <div className="sign-up absolute top-0 h-full transition duration-1000 ease-in-out left-0 w-[50%] ">
+      <div className="sign-up absolute top-0 h-full transition-all duration-700 ease-in-out left-0 w-[50%] opacity-0 z-[1] ">
         <form className="bg-[#fff] flex items-center justify-center flex-col py-0 px-[40px] h-full">
-          <h1>Create Account</h1>
+          <h1>Sign Up</h1>
           <div className="my-5 mx-0">
             <a
               href="#"
@@ -31,16 +31,8 @@ function App() {
             >
               <i className="fa-brands fa-github" />
             </a>
-            <a
-              href="#"
-              className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
-            >
-              <i className="fa-brands fa-linkedin-in" />
-            </a>
           </div>
-          <span className="text-[13px]">
-            or use your email for registeration
-          </span>
+          <span>or use your email for registeration</span>
           <input
             className="bg-[#eee] border-none my-[8px] mx-0 py-[10px] px-[15px] text-[13px] rounded-[8px] w-full outline-none"
             type="text"
@@ -56,12 +48,12 @@ function App() {
             type="password"
             placeholder="Password"
           />
-          <button className="bg-[#ff7141] text-[#fff] text-[13px] py-[10px] px-[45px] border border-solid border-transparent border-1">
+          <button className="bg-[#ff7141] text-[#fff] text-[13px] py-[10px] px-[45px] my-[10px] font-bold border border-solid border-transparent border-1 cursor-pointer">
             Sign Up
           </button>
         </form>
       </div>
-      <div className="sign-in absolute top-0 h-full transition duration-1000 ease-in-out left-0 w-[50%] z-[2]">
+      <div className=" absolute top-0 h-full transition-all duration-700 ease-in-out sign-in left-0 w-[50%] z-[2]">
         <form className="bg-[#fff] flex items-center justify-center flex-col p-0 px-[40px] h-full">
           <h1>Sign In</h1>
           <div className="my-5 mx-0">
@@ -83,14 +75,8 @@ function App() {
             >
               <i className="fa-brands fa-github" />
             </a>
-            <a
-              href="#"
-              className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px] border border-solid border-gray-300 rounded-1/5 inline-flex justify-center items-center mx-3 w-[40px] h-[40px]"
-            >
-              <i className="fa-brands fa-linkedin-in" />
-            </a>
           </div>
-          <span className="text-[13px]">or use your email password</span>
+          <span>or use your email password</span>
           <input
             className="bg-[#eee] border-none my-[8px] mx-0 py-[10px] px-[15px] text-[13px] rounded-[8px] w-full outline-none"
             type="email"
@@ -103,41 +89,46 @@ function App() {
           />
           <a
             href="#"
-            className="icon text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0 mb-[10px]"
+            className="text-[13px] text-[#ff7141] no-underline mt-[15px] mr-0"
           >
             Forget Your Password?
           </a>
-          <button className="bg-[#ff7141] text-[#fff] text-[13px] py-[10px] px-[45px] border border-solid border-transparent border-1">
+          <button
+            className="bg-[#ff7141] text-[#fff] text-[13px] py-[10px] px-[45px] my-[10px] font-bold border border-solid border-transparent border-1"
+            cursor-pointer
+          >
             Sign In
           </button>
         </form>
       </div>
-      <div className="toggle-container ">
+      <div className="toggle-container absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-all duration-700 ease-in-out rounded-none z-[1000]">
         <div className="toggle bg-[#ff7141] text-white relative left-[-100%] h-full w-[200%] transform translate-x-0 transition-all duration-700 ease-in-out">
-          <div className="toggle-panel absolute w-1/2 h-full flex justify-center items-center flex-col py-0 px-[30px] text-center top-0 transform translate-x-0 transition-all duration-700 ease-in-out toggle-left">
+          <div className="absolute w-1/2 h-full flex justify-center items-center flex-col py-0 px-[30px] text-center top-0 transform translate-x-0 transition-all duration-700 ease-in-out toggle-left">
             <h1>Welcome Back!</h1>
-            <p className="text-[14px] leading-5 tracking-tight my-3 mx-0">
+            <p className="text-[14px] leading-5 tracking-tight my-5 mx-0">
               Enter your personal details to come to my website
             </p>
             <button
-              className="bg-[#ff7141] text-[#fff] text-[13px] py-[10px] px-[45px] border border-solid border-transparent border-1 bg-transparent "
-              id="login"
+              className="cta relative py-3 px-[18px] transition-all duration-300 ease border-none bg-none cursor-pointer active:transform scale-[0.95] hover:before:w-full"
               onClick={() => handleClick(false)}
             >
-              Sign In
+              <span className="relative text-[18px] font-bold tracking-wider text-[#234567]">
+                Hover me
+              </span>
             </button>
           </div>
-          <div className="toggle-panel absolute w-1/2 h-full flex justify-center items-center flex-col py-0 px-[30px] text-center top-0 transform translate-x-0 transition-all duration-700 ease-in-out   toggle-right">
+          <div className="absolute w-1/2 h-full flex justify-center items-center flex-col py-0 px-[30px] text-center top-0 transform translate-x-0 transition-all duration-700 ease-in-out toggle-right">
             <h1>Hi, Guy!</h1>
-            <p className="text-[14px] leading-5 tracking-tight my-3 mx-0">
+            <p className="text-[14px] leading-5 tracking-tight my-5 mx-0">
               Register with your personal details to come to my website
             </p>
             <button
-              className="bg-transparent text-[#fff] text-[13px] py-[10px] px-[45px] border border-solid border-transparent border-1"
-              id="register"
+              className="cta relative py-3 px-[18px] transition-all duration-300 ease border-none bg-none cursor-pointer active:transform scale-[0.95]  hover:before:w-full"
               onClick={() => handleClick(true)}
             >
-              Sign Up
+              <span className="relative text-[18px] font-bold tracking-wider text-[#234567]">
+                Hover me
+              </span>
             </button>
           </div>
         </div>
