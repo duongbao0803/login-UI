@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 
 function App() {
@@ -7,6 +6,7 @@ function App() {
   const handleClick = (status: boolean) => {
     setIsActive(status);
   };
+
   return (
     <div className={`container ${isActive ? "active" : ""}`} id="container">
       <div className="sign-up absolute top-0 h-full transition-all duration-700 ease-in-out left-0 w-[50%] opacity-0 z-[1] ">
